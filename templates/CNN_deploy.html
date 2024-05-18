@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="{{ url_for('static', filename='upload.js')}}"></script>
+
+    <style>
+        article,
+        aside,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    
+</head>
+<body style="background: grey;"> 
+    <div align="center" style="padding: 70px 0; border: 3px solid rgb(103, 101, 101);">
+        <h1 style="margin: 30px;">Brain Tumor Classification</h1>
+    <form action="http://127.0.0.1:5000/uploader" method="POST" enctype="multipart/form-data" > 
+        <input type='file' name='file' onchange="readURL(this);" style ="padding:10px;">
+        <img id="blah" src="#" alt="your image" style="display:none; padding:50px" > 
+        <div style ="padding:10px;">
+        <button type="submit">Submit & predict</button>
+    </div> </div>
+  
+    </form> 
+
+    <script>
+        function readURL(input){
+            if (input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('blah').src = e.target.result;
+                    document.getElementById('blah').style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+                
+        }
+    </script>
+</body> 
+</html>
